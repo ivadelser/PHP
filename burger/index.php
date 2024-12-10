@@ -10,7 +10,9 @@ require_once "Controller/burgerController.php";
         $index->delete($id);
     } elseif ($action == "create"){
         $index->create();
+    } elseif ($action == "listarProductos"){
+        $index->listarProductos($id);
     } else{
-        $index->index();
+        $index->indexUser();
     }
 ?>

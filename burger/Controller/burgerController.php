@@ -1,17 +1,31 @@
 <?php
     require_once "Model/burger.php";
+    require_once "Model/categories.php";
     
     class burgerController{
 
         private $burgerModel;
+        private $categoriesModel;
 
         public function __construct(){
             $this->burgerModel = new Burger();
+            $this->categoriesModel = new Categories();
         }
 
-        public function index(){
+        public function indexAdmin(){
             $burger = $this->burgerModel->getAll();
-            require "View/listar.php";
+            require "View/listarAdmin.php";
+        }
+
+        public function indexUser(){
+            $categories = $this->categoriesModel->getAll();
+            require "View/listarUser.php";
+        }
+
+        public function listarProductos($id){
+            $idCategory = $id;
+            $burger = $this->burgerModel->getAll();
+            require "View/listarProductos.php";
         }
 
         public function create(){
@@ -45,7 +59,7 @@
         }
 
         public function delete($id){
-            $this->taskModel->delete($id);
+            $this->burgerModel->delete($id);
             header("Location: index.php");
         }
     }
