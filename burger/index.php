@@ -12,6 +12,8 @@ require_once "Controller/burgerController.php";
         $index->create();
     } elseif ($action == "listarProductos"){
         $index->listarProductos($id);
+    } elseif($action == "burgerAdmin"){
+        $index->indexAdmin();
     } else{
         $index->indexUser();
     }
